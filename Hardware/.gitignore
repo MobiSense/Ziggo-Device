@@ -1,0 +1,5 @@
+# petalinux build
+*.BIN
+*.scr
+*.ub
+*.tar.gz
