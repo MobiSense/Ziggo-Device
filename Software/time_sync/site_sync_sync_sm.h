@@ -1,7 +1,7 @@
 #ifndef SITE_SYNC_SYNC_H
 #define SITE_SYNC_SYNC_H
 
-#include "ptp_types.h"
+#include "../tsn_drivers/ptp_types.h"
 #include "clock_slave_sync_sm.h"
 #include "port_sync_sync_send_sm.h"
 

@@ -116,7 +116,7 @@ json* get_schedule() {
 }
 
 string get_mac_address() {
-    ifstream file("/sys/class/net/eth0/address");
+    ifstream file("/sys/class/net/eth1/address");
     string mac;
     file >> mac;
     return toUpper(mac);
@@ -212,9 +212,13 @@ void config_pkg_gen() {
         for (const auto& flow: elem["schedule"]) {
             int period = flow["period"].get<int>();
             int start = flow["start"].get<int>() % period;
+            int end = flow["end"].get<int>() % period;
             int job_id = flow["job_id"].get<int>();
             int flow_id = flow["flow_id"].get<int>();
             int seq_id = (job_id << 8) | flow_id;
+            // 1 schedule slot = 2^14ns = 16.384us, 1500Byte/1000Mbps=12us
+            int pkt_number = (int)((float)(end - start) * (16.384 / 12.0)); // [start, end)
+            // int pkt_number = 1;
 
             int src_id, dst_id;
             if (!find_src_dst(sche, job_id, flow_id, src_id, dst_id)) {
@@ -223,7 +227,7 @@ void config_pkg_gen() {
             }
             
             for (int i = 0, t = start; i < superperiod / period; i++, t += period) {
-                vParams.emplace_back(seq_id, 1, i, superperiod / period,
+                vParams.emplace_back(seq_id, pkt_number, i * pkt_number, (superperiod / period)*pkt_number,
                                      (int64_t)t << 14, src_id, dst_id);
             }
         }

@@ -16,6 +16,7 @@
 #include <pthread.h>
 
 #include "dma-proxy.h"
+#include "../log/log.h"
 #include "../pkt_gen_control/pkt_gen.h"
 
 /* The user must tune the application number of channels to match the proxy driver device tree
@@ -75,7 +76,7 @@ int axi_dma_init() {
 		}
 	}
 
-    printf ("Successfully initiate DMA.\r\n");
+    log_info ("Successfully initiate DMA.");
 
     return 1;
 }
@@ -87,7 +88,8 @@ void DMA_send (uint8_t *buffer, int length) {
     ioctl(tx_channels[0].fd, XFER, &buffer_id);
 
     if (tx_channels[0].buf_ptr[buffer_id].status != PROXY_NO_ERROR) {
-        printf("*** ERROR: DMA send frame fail.\r\n");
+        log_error("DMA send frame fail.\r\n");
+        exit(EXIT_FAILURE);
 	}
 }
 
@@ -105,6 +107,9 @@ int is_ptp_frame(uint8_t *buffer_ptr) {
 
 void process_packet(uint8_t *buf, buffer_queue *queue) {
 	// printf ("Processing a packet: \r\n");
+	// for (int i = 0; i < 32; i++)
+	// 	printf("%02x", buf[i]);
+	// printf("\n");
     if (is_ptp_frame(buf)) {
         // printf ("Push the PTP packet into buffer queue.\r\n");
         pthread_mutex_lock(&buf_queue_lock);
@@ -121,7 +126,7 @@ void process_packet(uint8_t *buf, buffer_queue *queue) {
 
 // cite: https://github.com/Horacehxw/software-prototypes/blob/master/linux-user-space-dma/Software/User/dma-proxy-test.c
 void *DMA_rx_thread (buffer_queue *queue) {
-	printf ("Entering rx thread \r\n");
+	log_info("Entering rx thread");
     struct channel *channel_ptr = rx_channels;
     int in_progress_count = 0, buffer_id = 0;
 	int rx_counter = 0;

@@ -1,7 +1,7 @@
 #ifndef MSG_FRAME_H
 #define MSG_FRAME_H
 
-#include "ptp_types.h"
+#include "../tsn_drivers/ptp_types.h"
 #include "vscode.h"
 
 // 2 + 4 + 4 = 10 bytes

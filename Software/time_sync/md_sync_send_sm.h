@@ -1,7 +1,7 @@
 #ifndef MD_SYNC_SEND_SM_H
 #define MD_SYNC_SEND_SM_H
 
-#include "ptp_types.h"
+#include "../tsn_drivers/ptp_types.h"
 
 typedef enum {
     MDSS_REACTION,

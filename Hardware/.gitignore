@@ -1,5 +1,4 @@
-# petalinux build
-*.BIN
-*.scr
-*.ub
-*.tar.gz
+Work_Dir/
+.vscode/
+*.jou
+*.log

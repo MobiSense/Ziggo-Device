@@ -1,7 +1,7 @@
 #ifndef MD_PDELAY_RESP_SM_H
 #define MD_PDELAY_RESP_SM_H
 
-#include "ptp_types.h"
+#include "../tsn_drivers/ptp_types.h"
 
 typedef enum {
     PD_RESP_INIT,

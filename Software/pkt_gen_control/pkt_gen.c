@@ -43,6 +43,8 @@ char *file_name = "critical_log.csv";
 FILE *fp;
 critical_seq_log *critical_log;
 
+char *file_pkt_name = "packet_log.csv";
+FILE *fp_pkt = 0;
 
 #define MAX(x, y) (((x) > (y)) ? (x) : (y))
 #define MIN(x, y) (((x) < (y)) ? (x) : (y))
@@ -81,20 +83,9 @@ uint64_t swapByteOrder64(uint64_t value) {
 
 
 int is_critical_frame (uint8_t * buf_ptr) {
-    uint8_t value = 0x12;
-    // for (int i = 0; i < 60; i++) {
-    // 	printf ("%x ", buf_ptr[i]);
-    // }
-    // printf ("\n");
-    for (int i = 42; i < 60; i++) {
-        if (buf_ptr[i] != value--) {
-            // printf ("This is NOT a critical frame!\n");
-            return 0;
-        }
-    }
-    // printf ("\n");
-    // printf ("This is a critical frame!\n");
-    return 1;
+    ethernet_packet_vlan *packet = (ethernet_packet_vlan *) buf_ptr;
+    // printf("0x%02x\n", swapByteOrder16(packet->ether_type));
+    return swapByteOrder16(packet->ether_type) == CRITICAL_FRAME_ETHER_TYPE;
 }
 
 int64_t calc_mean (int64_t *array, int num) {
@@ -128,12 +119,26 @@ void process_critical_frame (uint8_t *buf) {
         }
     }
 
+    if (!fp_pkt) {
+        fp_pkt = fopen(file_pkt_name, "a");
+        if (!fp_pkt) {
+            printf ("*** Error: Cannot open file %s\n\n", file_name);
+        } else {
+            fprintf (fp_pkt, "Seq ID, Pkt ID, TX timestamp, RX timestamp, Latency\r\n");
+            fflush (fp_pkt);
+        }
+    }
+
     // parse critical frame
     ethernet_packet_vlan *packet = (ethernet_packet_vlan *) buf;
     uint16_t seq_id = swapByteOrder16(packet->seq_id);
     uint32_t pkt_id = swapByteOrder(packet->pkt_id);
     uint64_t tx_ts  = swapByteOrder64(packet->tx_timestamp);
     uint64_t rx_ts  = swapByteOrder64(packet->rx_timestamp);
+
+    // print packet-wise information for detailed analysis
+    fprintf (fp_pkt, "%04X, %u, %lld, %lld, %lld\r\n",
+                    seq_id, pkt_id, tx_ts, rx_ts, (int64_t)rx_ts - (int64_t)tx_ts);
 
     // init sequence slot inside log structure
     if (!critical_log[seq_id].latency_list) {
@@ -185,7 +190,7 @@ void process_critical_frame (uint8_t *buf) {
 }
 
 int print_critical_frame (uint8_t *buf_ptr) {
-    if (!is_critical_frame) {
+    if (!is_critical_frame(buf_ptr)) {
         printf ("ERROR ***: (function print_critical_frame) try to print a non critical frame!\n");
         return 1;
     }

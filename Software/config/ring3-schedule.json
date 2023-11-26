@@ -1,0 +1,254 @@
+[
+    {
+        "type": "switch",
+        "id": 3,
+        "mac": "00:0A:35:00:01:53",
+        "schedule": [
+            {
+                "period": 2048,
+                "start": 0,
+                "end": 512,
+                "job_id": 2
+            }
+        ]
+    },
+    {
+        "type": "switch",
+        "id": 4,
+        "mac": "00:0A:35:00:03:53",
+        "schedule": [
+            {
+                "period": 1024,
+                "start": 869,
+                "end": 997,
+                "job_id": 1
+            }
+        ]
+    },
+    {
+        "type": "switch",
+        "id": 5,
+        "mac": "00:0A:35:00:02:53",
+        "schedule": [
+            {
+                "period": 2048,
+                "start": 1075,
+                "end": 1587,
+                "job_id": 0
+            }
+        ]
+    },
+    {
+        "type": "link",
+        "from": 0,
+        "to": 3,
+        "from_port": 0,
+        "id": 0,
+        "schedule": [
+            {
+                "period": 2048,
+                "start": 1048,
+                "end": 1074,
+                "job_id": 0,
+                "flow_id": 0
+            },
+            {
+                "period": 1024,
+                "start": 842,
+                "end": 868,
+                "job_id": 1,
+                "flow_id": 3
+            }
+        ]
+    },
+    {
+        "type": "link",
+        "from": 1,
+        "to": 4,
+        "from_port": 0,
+        "id": 0,
+        "schedule": [
+            {
+                "period": 2048,
+                "start": 1048,
+                "end": 1074,
+                "job_id": 0,
+                "flow_id": 1
+            },
+            {
+                "period": 2048,
+                "start": 2021,
+                "end": 2047,
+                "job_id": 2,
+                "flow_id": 6
+            }
+        ]
+    },
+    {
+        "type": "link",
+        "from": 2,
+        "to": 5,
+        "from_port": 0,
+        "id": 0,
+        "schedule": [
+            {
+                "period": 1024,
+                "start": 842,
+                "end": 868,
+                "job_id": 1,
+                "flow_id": 4
+            },
+            {
+                "period": 2048,
+                "start": 2021,
+                "end": 2047,
+                "job_id": 2,
+                "flow_id": 7
+            }
+        ]
+    },
+    {
+        "type": "link",
+        "from": 3,
+        "to": 0,
+        "from_port": 0,
+        "id": 6,
+        "schedule": [
+            {
+                "period": 2048,
+                "start": 512,
+                "end": 538,
+                "job_id": 2,
+                "flow_id": 8
+            }
+        ]
+    },
+    {
+        "type": "link",
+        "from": 3,
+        "to": 4,
+        "from_port": 1,
+        "id": 0,
+        "schedule": [
+            {
+                "period": 1024,
+                "start": 843,
+                "end": 869,
+                "job_id": 1,
+                "flow_id": 3
+            }
+        ]
+    },
+    {
+        "type": "link",
+        "from": 3,
+        "to": 5,
+        "from_port": 2,
+        "id": 6,
+        "schedule": [
+            {
+                "period": 2048,
+                "start": 1049,
+                "end": 1075,
+                "job_id": 0,
+                "flow_id": 0
+            }
+        ]
+    },
+    {
+        "type": "link",
+        "from": 4,
+        "to": 1,
+        "from_port": 0,
+        "id": 6,
+        "schedule": [
+            {
+                "period": 1024,
+                "start": 997,
+                "end": 1023,
+                "job_id": 1,
+                "flow_id": 5
+            }
+        ]
+    },
+    {
+        "type": "link",
+        "from": 4,
+        "to": 3,
+        "from_port": 2,
+        "id": 6,
+        "schedule": [
+            {
+                "period": 2048,
+                "start": 2022,
+                "end": 2048,
+                "job_id": 2,
+                "flow_id": 6
+            }
+        ]
+    },
+    {
+        "type": "link",
+        "from": 4,
+        "to": 5,
+        "from_port": 1,
+        "id": 0,
+        "schedule": [
+            {
+                "period": 2048,
+                "start": 1049,
+                "end": 1075,
+                "job_id": 0,
+                "flow_id": 1
+            }
+        ]
+    },
+    {
+        "type": "link",
+        "from": 5,
+        "to": 2,
+        "from_port": 3,
+        "id": 6,
+        "schedule": [
+            {
+                "period": 2048,
+                "start": 1587,
+                "end": 1613,
+                "job_id": 0,
+                "flow_id": 2
+            }
+        ]
+    },
+    {
+        "type": "link",
+        "from": 5,
+        "to": 4,
+        "from_port": 1,
+        "id": 6,
+        "schedule": [
+            {
+                "period": 1024,
+                "start": 843,
+                "end": 869,
+                "job_id": 1,
+                "flow_id": 4
+            }
+        ]
+    },
+    {
+        "type": "link",
+        "from": 5,
+        "to": 3,
+        "from_port": 0,
+        "id": 0,
+        "schedule": [
+            {
+                "period": 2048,
+                "start": 2022,
+                "end": 2048,
+                "job_id": 2,
+                "flow_id": 7
+            }
+        ]
+    }
+]

@@ -1,0 +1,102 @@
+[
+    {
+        "type": "switch",
+        "id": 0,
+        "mac": "00:0A:35:00:01:53",
+        "schedule": []
+    },
+    {
+        "type": "switch",
+        "id": 1,
+        "mac": "00:0A:35:00:02:53",
+        "schedule": []
+    },
+    {
+        "type": "link",
+        "from": 0,
+        "to": 1,
+        "from_port": 2,
+        "id": 0,
+        "schedule": [
+            {
+                "period": 2048,
+                "start": 2,
+                "end": 1026,
+                "job_id": 1,
+                "flow_id": 1
+            }
+        ]
+    },
+    {
+        "type": "link",
+        "from": 0,
+        "to": 2,
+        "from_port": 0,
+        "id": 4,
+        "schedule": []
+    },
+    {
+        "type": "link",
+        "from": 0,
+        "to": 3,
+        "from_port": 1,
+        "id": 6,
+        "schedule": []
+    },
+    {
+        "type": "link",
+        "from": 1,
+        "to": 0,
+        "from_port": 0,
+        "id": 1,
+        "schedule": []
+    },
+    {
+        "type": "link",
+        "from": 1,
+        "to": 4,
+        "from_port": 1,
+        "id": 2,
+        "schedule": [
+            {
+                "period": 2048,
+                "start": 4,
+                "end": 1028,
+                "job_id": 1,
+                "flow_id": 1
+            }
+        ]
+    },
+    {
+        "type": "link",
+        "from": 2,
+        "to": 0,
+        "from_port": 0,
+        "id": 5,
+        "schedule": []
+    },
+    {
+        "type": "link",
+        "from": 3,
+        "to": 0,
+        "from_port": 0,
+        "id": 7,
+        "schedule": [
+            {
+                "period": 2048,
+                "start": 0,
+                "end": 1376,
+                "job_id": 1,
+                "flow_id": 1
+            }
+        ]
+    },
+    {
+        "type": "link",
+        "from": 4,
+        "to": 1,
+        "from_port": 0,
+        "id": 3,
+        "schedule": []
+    }
+]

@@ -1,7 +1,7 @@
 #ifndef PORT_SYNC_SYNC_RECEIVE_SM_H
 #define PORT_SYNC_SYNC_RECEIVE_SM_H
 
-#include "ptp_types.h"
+#include "../tsn_drivers/ptp_types.h"
 #include "site_sync_sync_sm.h"
 
 typedef enum {
