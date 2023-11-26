@@ -199,7 +199,7 @@
       <spirit:parameters>
         <spirit:parameter>
           <spirit:name>POLARITY</spirit:name>
-          <spirit:value spirit:id="BUSIFPARAM_VALUE.S00_AXI_RST.POLARITY" spirit:choiceRef="choice_list_74b5137e">ACTIVE_LOW</spirit:value>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.S00_AXI_RST.POLARITY" spirit:choiceRef="choice_list_9d8b0d81">ACTIVE_LOW</spirit:value>
         </spirit:parameter>
       </spirit:parameters>
     </spirit:busInterface>
@@ -424,6 +424,23 @@
       </spirit:port>
       <spirit:port>
         <spirit:name>pkt_id_out</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">31</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic_vector</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>pkt_size_out</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
@@ -787,7 +804,7 @@
       <spirit:enumeration>32</spirit:enumeration>
     </spirit:choice>
     <spirit:choice>
-      <spirit:name>choice_list_74b5137e</spirit:name>
+      <spirit:name>choice_list_9d8b0d81</spirit:name>
       <spirit:enumeration>ACTIVE_HIGH</spirit:enumeration>
       <spirit:enumeration>ACTIVE_LOW</spirit:enumeration>
     </spirit:choice>
@@ -807,7 +824,7 @@
       <spirit:file>
         <spirit:name>hdl/pkt_gen_controller_v1_1.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_88ba5f81</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_08479888</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
@@ -905,7 +922,7 @@
       </xilinx:taxonomies>
       <xilinx:displayName>pkt_gen_controller_v1.1</xilinx:displayName>
       <xilinx:coreRevision>2</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2021-11-05T08:30:14Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2023-01-03T03:19:30Z</xilinx:coreCreationDateTime>
       <xilinx:tags>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@6d611b5e_ARCHIVE_LOCATION">d:/Data/TSN_development/tsn_device/IP_repo/pkt_gen_controller_v1.1/pkt_gen_controller_1.1</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@214ffc5d_ARCHIVE_LOCATION">d:/Data/TSN_development/tsn_device/IP_repo/pkt_gen_controller_v1.1/pkt_gen_controller_1.1</xilinx:tag>
@@ -926,6 +943,16 @@
         <xilinx:tag xilinx:name="ui.data.coregen.dd@61eb313_ARCHIVE_LOCATION">d:/Data/TSN_development/tsn_device/IP_repo/pkt_gen_controller_v1.1/pkt_gen_controller_1.1</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@68756ed9_ARCHIVE_LOCATION">d:/Data/TSN_development/tsn_device/IP_repo/pkt_gen_controller_v1.1/pkt_gen_controller_1.1</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@3e5a5630_ARCHIVE_LOCATION">d:/Data/TSN_development/tsn_device/IP_repo/pkt_gen_controller_v1.1/pkt_gen_controller_1.1</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@379878a2_ARCHIVE_LOCATION">c:/Users/tsn/Desktop/tsn_device/IP_repo/pkt_gen_controller_v1.1/pkt_gen_controller_1.1</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@469a14f8_ARCHIVE_LOCATION">c:/Users/tsn/Desktop/tsn_device/IP_repo/pkt_gen_controller_v1.1/pkt_gen_controller_1.1</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@75129c16_ARCHIVE_LOCATION">c:/Users/tsn/Desktop/tsn_device/IP_repo/pkt_gen_controller_v1.1/pkt_gen_controller_1.1</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6566225f_ARCHIVE_LOCATION">c:/Users/tsn/Desktop/tsn_device/IP_repo/pkt_gen_controller_v1.1/pkt_gen_controller_1.1</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7d0f41a_ARCHIVE_LOCATION">c:/Users/tsn/Desktop/tsn_device/IP_repo/pkt_gen_controller_v1.1/pkt_gen_controller_1.1</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@55080ea3_ARCHIVE_LOCATION">c:/Users/tsn/Desktop/tsn_device/IP_repo/pkt_gen_controller_v1.1/pkt_gen_controller_1.1</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1d9452e0_ARCHIVE_LOCATION">c:/Users/tsn/Desktop/tsn_device/IP_repo/pkt_gen_controller_v1.1/pkt_gen_controller_1.1</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@39825473_ARCHIVE_LOCATION">c:/Users/tsn/Desktop/tsn_device/IP_repo/pkt_gen_controller_v1.1/pkt_gen_controller_1.1</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@39d55a78_ARCHIVE_LOCATION">c:/Users/tsn/Desktop/tsn_device/IP_repo/pkt_gen_controller_v1.1/pkt_gen_controller_1.1</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4ddf4d52_ARCHIVE_LOCATION">c:/Users/tsn/Desktop/tsn_device/IP_repo/pkt_gen_controller_v1.1/pkt_gen_controller_1.1</xilinx:tag>
       </xilinx:tags>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>

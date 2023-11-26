@@ -1,8 +1,8 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-//Date        : Mon Dec  5 11:26:51 2022
-//Host        : Horace-TNS-win10 running 64-bit major release  (build 9200)
+//Date        : Tue Jan  3 15:24:13 2023
+//Host        : DESKTOP-3T11DHQ running 64-bit major release  (build 9200)
 //Command     : generate_target zynq_ps_i_wrapper.bd
 //Design      : zynq_ps_i_wrapper
 //Purpose     : IP block netlist
@@ -60,6 +60,7 @@ module zynq_ps_i_wrapper
     max_sent_packet_counter_out_0,
     pkt_hdr_out_0,
     pkt_id_out_0,
+    pkt_size_out_0,
     rtc_clk_0,
     rtc_time_ns_0,
     s_axi_time_sync_araddr,
@@ -135,6 +136,7 @@ module zynq_ps_i_wrapper
   output [15:0]max_sent_packet_counter_out_0;
   output [127:0]pkt_hdr_out_0;
   output [31:0]pkt_id_out_0;
+  output [31:0]pkt_size_out_0;
   input rtc_clk_0;
   input [63:0]rtc_time_ns_0;
   output [31:0]s_axi_time_sync_araddr;
@@ -211,6 +213,7 @@ module zynq_ps_i_wrapper
   wire [15:0]max_sent_packet_counter_out_0;
   wire [127:0]pkt_hdr_out_0;
   wire [31:0]pkt_id_out_0;
+  wire [31:0]pkt_size_out_0;
   wire rtc_clk_0;
   wire [63:0]rtc_time_ns_0;
   wire [31:0]s_axi_time_sync_araddr;
@@ -288,6 +291,7 @@ module zynq_ps_i_wrapper
         .max_sent_packet_counter_out_0(max_sent_packet_counter_out_0),
         .pkt_hdr_out_0(pkt_hdr_out_0),
         .pkt_id_out_0(pkt_id_out_0),
+        .pkt_size_out_0(pkt_size_out_0),
         .rtc_clk_0(rtc_clk_0),
         .rtc_time_ns_0(rtc_time_ns_0),
         .s_axi_time_sync_araddr(s_axi_time_sync_araddr),

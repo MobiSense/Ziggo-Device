@@ -1,0 +1,44 @@
+{
+    "nodes": [
+        {
+            "id": 1,
+            "type": "device",
+            "mac": "00:0a:35:00:00:18"
+        },
+        {
+            "id": 2,
+            "type": "device",
+            "mac": "00:0a:35:00:00:15"
+        }
+    ],
+    "links": [
+        {
+            "id": 0,
+            "src": 1,
+            "src_port": 0,
+            "dst": 2,
+            "dst_port": 0
+        },
+        {
+            "id": 1,
+            "src": 2,
+            "src_port": 0,
+            "dst": 1,
+            "dst_port": 0
+        }
+    ],
+    "fwd": [
+        {
+            "src": 1,
+            "dst": 2,
+            "id": 0,
+            "src_port": 0
+        },
+        {
+            "src": 2,
+            "dst": 1,
+            "id": 1,
+            "src_port": 0
+        }
+    ]
+}

@@ -955,6 +955,7 @@ module tns_tsn_device #(
     (* mark_debug = "true" *) wire          enable_vlan;
     (* mark_debug = "true" *) wire [15:0]   seq_id;
     (* mark_debug = "true" *) wire [31:0]   pkt_id;
+    (* mark_debug = "true" *) wire [31:0]   pkt_size;
     (* mark_debug = "true" *) wire [15:0]   max_sent_packet_counter;
 
     wire  [7:0]          tx_axis_pkt_gen_tdata;
@@ -964,7 +965,7 @@ module tns_tsn_device #(
     (* mark_debug = "true" *)wire                 tx_pkt_gen_finish;
     
     axi_packet_generator #(
-        .PKT_SIZE(1500)
+        .PKT_SIZE(1000)
     ) pat_gen_inst(
         /* This clk must be synced to tx_signal & tx_axis's clk */
         .axi_tclk                  (tx_fifo_clock),
@@ -981,6 +982,7 @@ module tns_tsn_device #(
         .enable_vlan_in             (enable_vlan),
         .seq_id_in                  (seq_id),
         .pkt_id_in                  (pkt_id),
+        .pkt_size_in                (pkt_size),
         .max_sent_packet_counter_in (max_sent_packet_counter),
 
         .pkt_gen_finish             (tx_pkt_gen_finish)
@@ -1183,6 +1185,7 @@ module tns_tsn_device #(
         .enable_vlan_out_0                  (enable_vlan),
         .seq_id_out_0                       (seq_id),
         .pkt_id_out_0                       (pkt_id),
+        .pkt_size_out_0                     (pkt_size),
         .max_sent_packet_counter_out_0      (max_sent_packet_counter),
         .tx_signal_0                        (tx_signal),
         .external_pl_reset                  (external_pl_reset)

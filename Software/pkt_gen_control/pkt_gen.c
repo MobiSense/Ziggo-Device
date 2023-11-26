@@ -18,7 +18,8 @@
 *       pkt_number_sent[i] =  reg9*i+11[31:16];
 *       pkt_id_start[i] =  reg9*i+12;
 *       pkt_id_update[i] =  reg9*i+13;
-*       tx_offset[i] = { reg9*i+15,  reg9*i+14 };
+*       pkt_size[i] = reg9*i+14
+*       tx_offset[i] = { reg9*i+16,  reg9*i+15 };
 */
 
 // define global register address
@@ -260,7 +261,7 @@ int finish_pkt_gen_config() {
 }
 
 int set_pkt_gen_slot (int slot_id, uint16_t seq_id, uint16_t pkt_number, uint32_t pkt_id_start, 
-        uint32_t pkt_id_update, int64_t tx_offset, uint8_t *src_mac, uint8_t *dest_mac) {
+        uint32_t pkt_id_update, uint32_t pkt_size, int64_t tx_offset, uint8_t *src_mac, uint8_t *dest_mac) {
     // initialize mac address
     #ifndef ETHER_ADDR_LEN
     #define ETHER_ADDR_LEN 6
@@ -274,11 +275,12 @@ int set_pkt_gen_slot (int slot_id, uint16_t seq_id, uint16_t pkt_number, uint32_
     *((unsigned *)(base_ptr_pkt_gen+SEQ_ENABLE_VLAN)) |= 1UL<<slot_id; // enable vlan
     memcpy (seq_ptr[slot_id].hdr.ether_dhost, mac_addr, ETHER_ADDR_LEN*2); // must be 12 byte copy
     seq_ptr[slot_id].hdr.TPID = 0x0081; // 0x8100 acctually, need to be reversed
-    seq_ptr[slot_id].hdr.vlan_header = 0x0020; // 0x2002 acctually, need to be reversed
+    seq_ptr[slot_id].hdr.vlan_header = 0x0020; // 0x2000 acctually, need to be reversed; PCP-3bit priority code = 2
     seq_ptr[slot_id].seq_id = seq_id; // this is irrelevant to current sequence's index
     seq_ptr[slot_id].pkt_number_sent = pkt_number;
     seq_ptr[slot_id].pkt_id_start = pkt_id_start;
     seq_ptr[slot_id].pkt_id_update = pkt_id_update;
+    seq_ptr[slot_id].pkt_size = pkt_size;
     seq_ptr[slot_id].tx_offset = tx_offset;
 }
 
@@ -297,13 +299,13 @@ int pkt_gen_test() {
 
 
     // setup slot 0 content
-    set_pkt_gen_slot (0, 1, 10, 0, 20, 0, src_mac, dest_mac_a);
+    set_pkt_gen_slot (0, 1, 10, 0, 20, 1500, 0, src_mac, dest_mac_a);
     
     // setup slot 1 content
-    set_pkt_gen_slot (1, 3, 20, 0, 20, 1<<22, src_mac, dest_mac_b);
+    set_pkt_gen_slot (1, 3, 20, 0, 20, 1500, 1<<22, src_mac, dest_mac_b);
     
     // setup slot 2 content
-    set_pkt_gen_slot (2, 1, 10, 10, 20, 1<<24, src_mac, dest_mac_a);
+    set_pkt_gen_slot (2, 1, 10, 10, 20, 1500, 1<<24, src_mac, dest_mac_a);
 
     finish_pkt_gen_config();
 }

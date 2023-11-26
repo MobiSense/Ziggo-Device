@@ -671,11 +671,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Nov 30 10:05:34 UTC 2021</spirit:value>
+            <spirit:value>Tue Jan 03 07:24:13 UTC 2023</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:9e0f6943</spirit:value>
+            <spirit:value>9:3dc928bc</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -686,7 +686,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:9e0f6943</spirit:value>
+            <spirit:value>9:3dc928bc</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -702,11 +702,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Nov 30 10:05:34 UTC 2021</spirit:value>
+            <spirit:value>Tue Jan 03 07:24:13 UTC 2023</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:9e0f6943</spirit:value>
+            <spirit:value>9:3dc928bc</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -722,11 +722,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Nov 30 10:05:34 UTC 2021</spirit:value>
+            <spirit:value>Tue Jan 03 07:24:13 UTC 2023</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:13ca6b9f</spirit:value>
+            <spirit:value>9:c5a7fe01</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -742,11 +742,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Nov 30 10:05:34 UTC 2021</spirit:value>
+            <spirit:value>Tue Jan 03 07:24:13 UTC 2023</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:13ca6b9f</spirit:value>
+            <spirit:value>9:c5a7fe01</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -844,6 +844,23 @@
       </spirit:port>
       <spirit:port>
         <spirit:name>pkt_id_out</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">31</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>std_logic_vector</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>pkt_size_out</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
@@ -1338,6 +1355,16 @@
         <xilinx:tag xilinx:name="ui.data.coregen.dd@61eb313_ARCHIVE_LOCATION">d:/Data/TSN_development/tsn_device/IP_repo/pkt_gen_controller_v1.1/pkt_gen_controller_1.1</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@68756ed9_ARCHIVE_LOCATION">d:/Data/TSN_development/tsn_device/IP_repo/pkt_gen_controller_v1.1/pkt_gen_controller_1.1</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@3e5a5630_ARCHIVE_LOCATION">d:/Data/TSN_development/tsn_device/IP_repo/pkt_gen_controller_v1.1/pkt_gen_controller_1.1</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@379878a2_ARCHIVE_LOCATION">c:/Users/tsn/Desktop/tsn_device/IP_repo/pkt_gen_controller_v1.1/pkt_gen_controller_1.1</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@469a14f8_ARCHIVE_LOCATION">c:/Users/tsn/Desktop/tsn_device/IP_repo/pkt_gen_controller_v1.1/pkt_gen_controller_1.1</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@75129c16_ARCHIVE_LOCATION">c:/Users/tsn/Desktop/tsn_device/IP_repo/pkt_gen_controller_v1.1/pkt_gen_controller_1.1</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6566225f_ARCHIVE_LOCATION">c:/Users/tsn/Desktop/tsn_device/IP_repo/pkt_gen_controller_v1.1/pkt_gen_controller_1.1</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7d0f41a_ARCHIVE_LOCATION">c:/Users/tsn/Desktop/tsn_device/IP_repo/pkt_gen_controller_v1.1/pkt_gen_controller_1.1</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@55080ea3_ARCHIVE_LOCATION">c:/Users/tsn/Desktop/tsn_device/IP_repo/pkt_gen_controller_v1.1/pkt_gen_controller_1.1</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1d9452e0_ARCHIVE_LOCATION">c:/Users/tsn/Desktop/tsn_device/IP_repo/pkt_gen_controller_v1.1/pkt_gen_controller_1.1</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@39825473_ARCHIVE_LOCATION">c:/Users/tsn/Desktop/tsn_device/IP_repo/pkt_gen_controller_v1.1/pkt_gen_controller_1.1</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@39d55a78_ARCHIVE_LOCATION">c:/Users/tsn/Desktop/tsn_device/IP_repo/pkt_gen_controller_v1.1/pkt_gen_controller_1.1</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4ddf4d52_ARCHIVE_LOCATION">c:/Users/tsn/Desktop/tsn_device/IP_repo/pkt_gen_controller_v1.1/pkt_gen_controller_1.1</xilinx:tag>
       </xilinx:tags>
       <xilinx:configElementInfos>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.RTC_CLK.ASSOCIATED_BUSIF" xilinx:valuePermission="bd"/>

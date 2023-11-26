@@ -62,6 +62,7 @@ public:
                          uint16_t pkt_number,
                          uint32_t pkt_id_start,
                          uint32_t pkt_id_update,
+                         uint32_t pkt_size,
                          int64_t tx_offset,
                          int src_id,
                          int dst_id) {
@@ -69,6 +70,7 @@ public:
         this->pkt_number = pkt_number;
         this->pkt_id_start = pkt_id_start;
         this->pkt_id_update = pkt_id_update;
+        this->pkt_size = pkt_size;
         this->tx_offset = tx_offset;
         this->src_id = src_id;
         this->dst_id = dst_id;
@@ -84,6 +86,7 @@ public:
     uint16_t pkt_number;
     uint32_t pkt_id_start;
     uint32_t pkt_id_update;
+    uint32_t pkt_size;
     int64_t tx_offset;
     int src_id, dst_id;
 };
@@ -116,7 +119,7 @@ json* get_schedule() {
 }
 
 string get_mac_address() {
-    ifstream file("/sys/class/net/eth1/address");
+    ifstream file("/sys/class/net/eth0/address");
     string mac;
     file >> mac;
     return toUpper(mac);
@@ -215,10 +218,17 @@ void config_pkg_gen() {
             int end = flow["end"].get<int>() % period;
             int job_id = flow["job_id"].get<int>();
             int flow_id = flow["flow_id"].get<int>();
+            // int pkt_size = flow["pkt_size"].get<int>();
+            // cout << "Pkt size" << endl;
+            int pkt_size = 1500;
+            if (flow.find("pkt_size") != flow.end()) 
+                pkt_size = flow["pkt_size"].get<int>();
+
             int seq_id = (job_id << 8) | flow_id;
             // 1 schedule slot = 2^14ns = 16.384us, 1500Byte/1000Mbps=12us
-            int pkt_number = (int)((float)(end - start) * (16.384 / 12.0)); // [start, end)
-            // int pkt_number = 1;
+            // int pkt_number = (int)((float)(end - start) * (16.384 / 12.0)); // [start, end)
+            // int pkt_number = 1; 
+            int pkt_number = end - start;
 
             int src_id, dst_id;
             if (!find_src_dst(sche, job_id, flow_id, src_id, dst_id)) {
@@ -227,7 +237,7 @@ void config_pkg_gen() {
             }
             
             for (int i = 0, t = start; i < superperiod / period; i++, t += period) {
-                vParams.emplace_back(seq_id, pkt_number, i * pkt_number, (superperiod / period)*pkt_number,
+                vParams.emplace_back(seq_id, pkt_number, i * pkt_number, (superperiod / period)*pkt_number, pkt_size,
                                      (int64_t)t << 14, src_id, dst_id);
             }
         }
@@ -251,6 +261,7 @@ void config_pkg_gen() {
                             vParams[i].pkt_number,
                             vParams[i].pkt_id_start,
                             vParams[i].pkt_id_update,
+                            vParams[i].pkt_size,
                             vParams[i].tx_offset,
                             src_addr.get_addr(),
                             dst_addr.get_addr());

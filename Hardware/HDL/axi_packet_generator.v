@@ -140,6 +140,7 @@ module axi_packet_generator #(
    input                    enable_vlan_in,
    input       [15:0]       seq_id_in,
    input       [31:0]       pkt_id_in,
+   input       [31:0]       pkt_size_in,
    input       [15:0]       max_sent_packet_counter_in,
 
    /* A pulse indetace one transmission burst ends */
@@ -341,10 +342,10 @@ end
 always @(posedge axi_tclk)
 begin
    if (axi_treset) begin
-      pkt_size <= PKT_SIZE - PKT_ADJUST;
+      pkt_size <= pkt_size_in - PKT_ADJUST;
    end
    else if (gen_state == DATA & next_gen_state != DATA) begin
-      pkt_size <= PKT_SIZE - PKT_ADJUST;
+      pkt_size <= pkt_size_in - PKT_ADJUST;
    end
 end
 

@@ -1,0 +1,18 @@
+[
+    {
+        "type": "link",
+        "from": 1,
+        "to": 2,
+        "from_port": 0,
+        "id": 0,
+        "schedule": [
+            {
+                "period": 2048,
+                "start": 0,
+                "end": 20,
+                "job_id": 0,
+                "flow_id": 0
+            }
+        ]
+    }
+]

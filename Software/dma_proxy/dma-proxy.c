@@ -110,18 +110,24 @@ void process_packet(uint8_t *buf, buffer_queue *queue) {
 	// for (int i = 0; i < 32; i++)
 	// 	printf("%02x", buf[i]);
 	// printf("\n");
-    if (is_ptp_frame(buf)) {
-        // printf ("Push the PTP packet into buffer queue.\r\n");
-        pthread_mutex_lock(&buf_queue_lock);
-        // printf ("dma-proxy.c: Entering critical region for buffer_queue.\r\n");
-        push_queue(queue, buf, MAX_PKT_LEN);
+    // if (is_ptp_frame(buf)) {
+    //     // printf ("Push the PTP packet into buffer queue.\r\n");
+    //     pthread_mutex_lock(&buf_queue_lock);
+    //     // printf ("dma-proxy.c: Entering critical region for buffer_queue.\r\n");
+    //     push_queue(queue, buf, MAX_PKT_LEN);
+    //     pthread_mutex_unlock(&buf_queue_lock);
+    //     // printf ("dma-proxy.c: Leaving critical region for buffer_queue.\r\n");
+    // }
+    // else if (is_critical_frame(buf)) {
+    //     // print_critical_frame(buf);
+	// 	process_critical_frame(buf);	
+    // }
+	// push all frames to queue as soon as possible
+	if (is_ptp_frame(buf) || is_critical_frame(buf)) {
+		pthread_mutex_lock(&buf_queue_lock);
+		push_queue(queue, buf, MAX_PKT_LEN);
         pthread_mutex_unlock(&buf_queue_lock);
-        // printf ("dma-proxy.c: Leaving critical region for buffer_queue.\r\n");
-    }
-    else if (is_critical_frame(buf)) {
-        // print_critical_frame(buf);
-		process_critical_frame(buf);
-    }
+	}
 }
 
 // cite: https://github.com/Horacehxw/software-prototypes/blob/master/linux-user-space-dma/Software/User/dma-proxy-test.c
@@ -152,11 +158,11 @@ void *DMA_rx_thread (buffer_queue *queue) {
 	 */
 	while (1) {
 
-        // poll (waste CPU)
-		ioctl(channel_ptr->fd, POLL_XFER, &buffer_id);
+        // // poll (waste CPU)
+		// ioctl(channel_ptr->fd, POLL_XFER, &buffer_id);
 
         // wait (may encounter error)
-		// ioctl(channel_ptr->fd, FINISH_XFER, &buffer_id);
+		ioctl(channel_ptr->fd, FINISH_XFER, &buffer_id);
 
 		if (channel_ptr->buf_ptr[buffer_id].status != PROXY_NO_ERROR) {
 //			printf("Proxy rx transfer haven't finished, # RX completed %d, # in progress %d\n",

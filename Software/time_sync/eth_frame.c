@@ -165,6 +165,11 @@ PTPMsgType recv_ptp_frame(uint8_t **buffer_ptr_ptr, TSUTimestamp **ts_ptr_ptr, u
     pthread_mutex_unlock(&buf_queue_lock);
     // printf ("eth_frame.c: Leaving critical region for buffer_queue.\r\n");
 
+    // check if it is critical frame
+    if (Status != RECV_NOTHING && is_critical_frame(RxBufferPtr)) {
+        process_critical_frame(RxBufferPtr);
+        Status = RECV_NOTHING; 
+    }
 
     if (Status == RECV_FRAME) {
         // We received a frame.

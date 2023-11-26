@@ -23,6 +23,7 @@
 		output          enable_vlan_out,
 		output [15:0]   seq_id_out,
 		output [31:0]   pkt_id_out,
+		output [31:0]   pkt_size_out,
 		output [15:0]   max_sent_packet_counter_out,
 
 		// User ports ends
@@ -64,6 +65,7 @@
 		.enable_vlan_out(enable_vlan_out),
 		.seq_id_out(seq_id_out),
 		.pkt_id_out(pkt_id_out),
+		.pkt_size_out(pkt_size_out),
 		.max_sent_packet_counter_out(max_sent_packet_counter_out),
 		.S_AXI_ACLK(s00_axi_aclk),
 		.S_AXI_ARESETN(s00_axi_aresetn),

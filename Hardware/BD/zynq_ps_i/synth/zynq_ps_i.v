@@ -1,8 +1,8 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-//Date        : Mon Dec  5 11:26:51 2022
-//Host        : Horace-TNS-win10 running 64-bit major release  (build 9200)
+//Date        : Tue Jan  3 15:24:13 2023
+//Host        : DESKTOP-3T11DHQ running 64-bit major release  (build 9200)
 //Command     : generate_target zynq_ps_i.bd
 //Design      : zynq_ps_i
 //Purpose     : IP block netlist
@@ -1544,6 +1544,7 @@ module zynq_ps_i
     max_sent_packet_counter_out_0,
     pkt_hdr_out_0,
     pkt_id_out_0,
+    pkt_size_out_0,
     rtc_clk_0,
     rtc_time_ns_0,
     s_axi_time_sync_araddr,
@@ -1619,6 +1620,7 @@ module zynq_ps_i
   output [15:0]max_sent_packet_counter_out_0;
   output [127:0]pkt_hdr_out_0;
   output [31:0]pkt_id_out_0;
+  output [31:0]pkt_size_out_0;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.RTC_CLK_0 CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.RTC_CLK_0, CLK_DOMAIN zynq_ps_i_rtc_clk_0, FREQ_HZ 125000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.000" *) input rtc_clk_0;
   input [63:0]rtc_time_ns_0;
   (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi_time_sync ARADDR" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME s_axi_time_sync, ADDR_WIDTH 32, ARUSER_WIDTH 0, AWUSER_WIDTH 0, BUSER_WIDTH 0, CLK_DOMAIN zynq_ps_i_processing_system7_0_0_FCLK_CLK0, DATA_WIDTH 32, FREQ_HZ 125000000, HAS_BRESP 1, HAS_BURST 0, HAS_CACHE 0, HAS_LOCK 0, HAS_PROT 1, HAS_QOS 0, HAS_REGION 0, HAS_RRESP 1, HAS_WSTRB 1, ID_WIDTH 0, INSERT_VIP 0, MAX_BURST_LENGTH 1, NUM_READ_OUTSTANDING 1, NUM_READ_THREADS 1, NUM_WRITE_OUTSTANDING 1, NUM_WRITE_THREADS 1, PHASE 0.000, PROTOCOL AXI4LITE, READ_WRITE_MODE READ_WRITE, RUSER_BITS_PER_BYTE 0, RUSER_WIDTH 0, SUPPORTS_NARROW_BURST 0, WUSER_BITS_PER_BYTE 0, WUSER_WIDTH 0" *) output [31:0]s_axi_time_sync_araddr;
@@ -1750,6 +1752,7 @@ module zynq_ps_i
   wire [15:0]pkt_gen_controller_0_max_sent_packet_counter_out;
   wire [127:0]pkt_gen_controller_0_pkt_hdr_out;
   wire [31:0]pkt_gen_controller_0_pkt_id_out;
+  wire [31:0]pkt_gen_controller_0_pkt_size_out;
   wire [15:0]pkt_gen_controller_0_seq_id_out;
   wire pkt_gen_controller_0_tx_signal;
   wire [14:0]processing_system7_0_DDR_ADDR;
@@ -1905,6 +1908,7 @@ module zynq_ps_i
   assign max_sent_packet_counter_out_0[15:0] = pkt_gen_controller_0_max_sent_packet_counter_out;
   assign pkt_hdr_out_0[127:0] = pkt_gen_controller_0_pkt_hdr_out;
   assign pkt_id_out_0[31:0] = pkt_gen_controller_0_pkt_id_out;
+  assign pkt_size_out_0[31:0] = pkt_gen_controller_0_pkt_size_out;
   assign processing_system7_0_GMII_ETHERNET_1_COL = GMII_ETHERNET_1_0_col;
   assign processing_system7_0_GMII_ETHERNET_1_CRS = GMII_ETHERNET_1_0_crs;
   assign processing_system7_0_GMII_ETHERNET_1_RXD = GMII_ETHERNET_1_0_rxd[7:0];
@@ -2134,6 +2138,7 @@ module zynq_ps_i
         .max_sent_packet_counter_out(pkt_gen_controller_0_max_sent_packet_counter_out),
         .pkt_hdr_out(pkt_gen_controller_0_pkt_hdr_out),
         .pkt_id_out(pkt_gen_controller_0_pkt_id_out),
+        .pkt_size_out(pkt_gen_controller_0_pkt_size_out),
         .rtc_clk(rtc_clk_0_1),
         .rtc_time_ns(rtc_time_ns_0_1),
         .s00_axi_aclk(processing_system7_0_FCLK_CLK0),

@@ -1,0 +1,177 @@
+// sequence 0
+    assign          valid[0]			= slv_reg4[0];
+    assign          enable_vlan[0]			= slv_reg5[0];
+	assign 			pkt_hdr[0]			= {slv_reg10, slv_reg9, slv_reg8, slv_reg7};
+	assign 			seq_id[0]			= slv_reg11[15:0];
+    assign 			pkt_number_sent[0]			= slv_reg11[31:16];
+	assign 			pkt_id_start[0]			= slv_reg12;
+	assign 			pkt_id_update[0]			= slv_reg13;
+    assign 			pkt_size[0]			= slv_reg14;
+	assign 			tx_offset[0]			= {slv_reg16, slv_reg15};
+
+    // sequence 1
+    assign          valid[1]			= slv_reg4[1];
+    assign          enable_vlan[1]			= slv_reg5[1];
+	assign 			pkt_hdr[1]			= {slv_reg19, slv_reg18, slv_reg17, slv_reg16};
+	assign 			seq_id[1]			= slv_reg20[15:0];
+    assign 			pkt_number_sent[1]			= slv_reg20[31:16];
+	assign 			pkt_id_start[1]			= slv_reg21;
+	assign 			pkt_id_update[1]			= slv_reg22;
+    assign 			pkt_size[1]			= slv_reg23;
+	assign 			tx_offset[1]			= {slv_reg25, slv_reg24};
+
+    // sequence 2
+    assign          valid[2]			= slv_reg4[2];
+    assign          enable_vlan[2]			= slv_reg5[2];
+	assign 			pkt_hdr[2]			= {slv_reg28, slv_reg27, slv_reg26, slv_reg25};
+	assign 			seq_id[2]			= slv_reg29[15:0];
+    assign 			pkt_number_sent[2]			= slv_reg29[31:16];
+	assign 			pkt_id_start[2]			= slv_reg30;
+	assign 			pkt_id_update[2]			= slv_reg31;
+    assign 			pkt_size[2]			= slv_reg32;
+	assign 			tx_offset[2]			= {slv_reg34, slv_reg33};
+
+    // sequence 3
+    assign          valid[3]			= slv_reg4[3];
+    assign          enable_vlan[3]			= slv_reg5[3];
+	assign 			pkt_hdr[3]			= {slv_reg37, slv_reg36, slv_reg35, slv_reg34};
+	assign 			seq_id[3]			= slv_reg38[15:0];
+    assign 			pkt_number_sent[3]			= slv_reg38[31:16];
+	assign 			pkt_id_start[3]			= slv_reg39;
+	assign 			pkt_id_update[3]			= slv_reg40;
+    assign 			pkt_size[3]			= slv_reg41;
+	assign 			tx_offset[3]			= {slv_reg43, slv_reg42};
+
+    // sequence 4
+    assign          valid[4]			= slv_reg4[4];
+    assign          enable_vlan[4]			= slv_reg5[4];
+	assign 			pkt_hdr[4]			= {slv_reg46, slv_reg45, slv_reg44, slv_reg43};
+	assign 			seq_id[4]			= slv_reg47[15:0];
+    assign 			pkt_number_sent[4]			= slv_reg47[31:16];
+	assign 			pkt_id_start[4]			= slv_reg48;
+	assign 			pkt_id_update[4]			= slv_reg49;
+    assign 			pkt_size[4]			= slv_reg50;
+	assign 			tx_offset[4]			= {slv_reg52, slv_reg51};
+
+    // sequence 5
+    assign          valid[5]			= slv_reg4[5];
+    assign          enable_vlan[5]			= slv_reg5[5];
+	assign 			pkt_hdr[5]			= {slv_reg55, slv_reg54, slv_reg53, slv_reg52};
+	assign 			seq_id[5]			= slv_reg56[15:0];
+    assign 			pkt_number_sent[5]			= slv_reg56[31:16];
+	assign 			pkt_id_start[5]			= slv_reg57;
+	assign 			pkt_id_update[5]			= slv_reg58;
+    assign 			pkt_size[5]			= slv_reg59;
+	assign 			tx_offset[5]			= {slv_reg61, slv_reg60};
+
+    // sequence 6
+    assign          valid[6]			= slv_reg4[6];
+    assign          enable_vlan[6]			= slv_reg5[6];
+	assign 			pkt_hdr[6]			= {slv_reg64, slv_reg63, slv_reg62, slv_reg61};
+	assign 			seq_id[6]			= slv_reg65[15:0];
+    assign 			pkt_number_sent[6]			= slv_reg65[31:16];
+	assign 			pkt_id_start[6]			= slv_reg66;
+	assign 			pkt_id_update[6]			= slv_reg67;
+    assign 			pkt_size[6]			= slv_reg68;
+	assign 			tx_offset[6]			= {slv_reg70, slv_reg69};
+
+    // sequence 7
+    assign          valid[7]			= slv_reg4[7];
+    assign          enable_vlan[7]			= slv_reg5[7];
+	assign 			pkt_hdr[7]			= {slv_reg73, slv_reg72, slv_reg71, slv_reg70};
+	assign 			seq_id[7]			= slv_reg74[15:0];
+    assign 			pkt_number_sent[7]			= slv_reg74[31:16];
+	assign 			pkt_id_start[7]			= slv_reg75;
+	assign 			pkt_id_update[7]			= slv_reg76;
+    assign 			pkt_size[7]			= slv_reg77;
+	assign 			tx_offset[7]			= {slv_reg79, slv_reg78};
+
+    // sequence 8
+    assign          valid[8]			= slv_reg4[8];
+    assign          enable_vlan[8]			= slv_reg5[8];
+	assign 			pkt_hdr[8]			= {slv_reg82, slv_reg81, slv_reg80, slv_reg79};
+	assign 			seq_id[8]			= slv_reg83[15:0];
+    assign 			pkt_number_sent[8]			= slv_reg83[31:16];
+	assign 			pkt_id_start[8]			= slv_reg84;
+	assign 			pkt_id_update[8]			= slv_reg85;
+    assign 			pkt_size[8]			= slv_reg86;
+	assign 			tx_offset[8]			= {slv_reg88, slv_reg87};
+
+    // sequence 9
+    assign          valid[9]			= slv_reg4[9];
+    assign          enable_vlan[9]			= slv_reg5[9];
+	assign 			pkt_hdr[9]			= {slv_reg91, slv_reg90, slv_reg89, slv_reg88};
+	assign 			seq_id[9]			= slv_reg92[15:0];
+    assign 			pkt_number_sent[9]			= slv_reg92[31:16];
+	assign 			pkt_id_start[9]			= slv_reg93;
+	assign 			pkt_id_update[9]			= slv_reg94;
+    assign 			pkt_size[9]			= slv_reg95;
+	assign 			tx_offset[9]			= {slv_reg97, slv_reg96};
+
+    // sequence 10
+    assign          valid[10]			= slv_reg4[10];
+    assign          enable_vlan[10]			= slv_reg5[10];
+	assign 			pkt_hdr[10]			= {slv_reg100, slv_reg99, slv_reg98, slv_reg97};
+	assign 			seq_id[10]			= slv_reg101[15:0];
+    assign 			pkt_number_sent[10]			= slv_reg101[31:16];
+	assign 			pkt_id_start[10]			= slv_reg102;
+	assign 			pkt_id_update[10]			= slv_reg103;
+    assign 			pkt_size[10]			= slv_reg104;
+	assign 			tx_offset[10]			= {slv_reg106, slv_reg105};
+
+    // sequence 11
+    assign          valid[11]			= slv_reg4[11];
+    assign          enable_vlan[11]			= slv_reg5[11];
+	assign 			pkt_hdr[11]			= {slv_reg109, slv_reg108, slv_reg107, slv_reg106};
+	assign 			seq_id[11]			= slv_reg110[15:0];
+    assign 			pkt_number_sent[11]			= slv_reg110[31:16];
+	assign 			pkt_id_start[11]			= slv_reg111;
+	assign 			pkt_id_update[11]			= slv_reg112;
+    assign 			pkt_size[11]			= slv_reg113;
+	assign 			tx_offset[11]			= {slv_reg115, slv_reg114};
+
+    // sequence 12
+    assign          valid[12]			= slv_reg4[12];
+    assign          enable_vlan[12]			= slv_reg5[12];
+	assign 			pkt_hdr[12]			= {slv_reg118, slv_reg117, slv_reg116, slv_reg115};
+	assign 			seq_id[12]			= slv_reg119[15:0];
+    assign 			pkt_number_sent[12]			= slv_reg119[31:16];
+	assign 			pkt_id_start[12]			= slv_reg120;
+	assign 			pkt_id_update[12]			= slv_reg121;
+    assign 			pkt_size[12]			= slv_reg122;
+	assign 			tx_offset[12]			= {slv_reg124, slv_reg123};
+
+    // sequence 13
+    assign          valid[13]			= slv_reg4[13];
+    assign          enable_vlan[13]			= slv_reg5[13];
+	assign 			pkt_hdr[13]			= {slv_reg127, slv_reg126, slv_reg125, slv_reg124};
+	assign 			seq_id[13]			= slv_reg128[15:0];
+    assign 			pkt_number_sent[13]			= slv_reg128[31:16];
+	assign 			pkt_id_start[13]			= slv_reg129;
+	assign 			pkt_id_update[13]			= slv_reg130;
+    assign 			pkt_size[13]			= slv_reg131;
+	assign 			tx_offset[13]			= {slv_reg133, slv_reg132};
+
+    // sequence 14
+    assign          valid[14]			= slv_reg4[14];
+    assign          enable_vlan[14]			= slv_reg5[14];
+	assign 			pkt_hdr[14]			= {slv_reg136, slv_reg135, slv_reg134, slv_reg133};
+	assign 			seq_id[14]			= slv_reg137[15:0];
+    assign 			pkt_number_sent[14]			= slv_reg137[31:16];
+	assign 			pkt_id_start[14]			= slv_reg138;
+	assign 			pkt_id_update[14]			= slv_reg139;
+    assign 			pkt_size[14]			= slv_reg140;
+	assign 			tx_offset[14]			= {slv_reg142, slv_reg141};
+
+    // sequence 15
+    assign          valid[15]			= slv_reg4[15];
+    assign          enable_vlan[15]			= slv_reg5[15];
+	assign 			pkt_hdr[15]			= {slv_reg145, slv_reg144, slv_reg143, slv_reg142};
+	assign 			seq_id[15]			= slv_reg146[15:0];
+    assign 			pkt_number_sent[15]			= slv_reg146[31:16];
+	assign 			pkt_id_start[15]			= slv_reg147;
+	assign 			pkt_id_update[15]			= slv_reg148;
+    assign 			pkt_size[15]			= slv_reg149;
+	assign 			tx_offset[15]			= {slv_reg151, slv_reg150};
+
+    
