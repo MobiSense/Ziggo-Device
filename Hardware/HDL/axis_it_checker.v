@@ -30,7 +30,8 @@ module axis_it_checker (
     input   [255:0]     axis_tdata,
     input               axis_tlast,
 
-    output  reg         is_it_frame
+    output  reg         is_it_frame,
+    output  reg [1:0]   frame_type // 2: it frames, 1: ptp frames, 0: critical frames
 );
 
 (* mark_debug = "true" *) reg [1:0]   state, next_state;
@@ -84,6 +85,7 @@ begin
     if (rst)
     begin
         is_it_frame <= 1'b1;
+        frame_type <= 2'b00;
     end
     else
     begin
@@ -92,10 +94,12 @@ begin
             if (ethertype1 == 32'h8100)
             begin
                 is_it_frame <= (ethertype2 != 32'h66ab && ethertype2 != 32'h88f7) ? 1'b1 : 1'b0;
+                frame_type <= (ethertype2 != 32'h66ab && ethertype2 != 32'h88f7) ? 2'b10 : ((ethertype2 == 32'h88f7) ? 2'b01 : 2'b00);
             end
             else
             begin
                 is_it_frame <= (ethertype1 != 32'h66ab && ethertype1 != 32'h88f7) ? 1'b1 : 1'b0;
+                frame_type <= (ethertype1 != 32'h66ab && ethertype1 != 32'h88f7) ? 2'b10 : ((ethertype1 == 32'h88f7) ? 2'b01 : 2'b00);
             end
         end
     end

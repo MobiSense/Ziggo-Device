@@ -7,9 +7,7 @@
 // Description: This is the simple MAC module. It only has one tx data axis path.
 // The source code is partly from xilinx example design of tri_mode_ethernet_mac.
 
-
 `timescale 1 ns/1 ps
-
 
 //------------------------------------------------------------------------------
 // The module declaration for the Simple Ethernet MAC.
@@ -51,7 +49,6 @@ module simple_mac_no_shared (
     input  [7:0]  tx_ifg_delay,
     output [31:0] tx_statistics_vector,
     output        tx_statistics_valid,
-
 
     // Transmitter (AXI-S) Interface
     //-------------------------------------------
@@ -121,7 +118,6 @@ module simple_mac_no_shared (
     output [7:0]  mac_rx_axis_tdata_out,
     output        mac_rx_axis_tlast_out
 );
-
 
    //----------------------------------------------------------------------------
    // Internal signals used in this fifo block level wrapper.
@@ -264,23 +260,23 @@ module simple_mac_no_shared (
 
    // Instantiate the Time Stamping Unit
    // tsu tx
-   tsu_axis_tx tsu_tx (
-      .rst(tx_mac_reset),
+//    tsu_axis_tx tsu_tx (
+//       .rst(tx_mac_reset),
 
-      .mac_axis_aclk(tx_mac_aclk_int),
-      .mac_axis_tvalid(tx_axis_mac_legacy_tvalid),
-      .mac_axis_tready(tx_axis_tsu_tready),
-      .mac_axis_tdata(tx_axis_mac_legacy_tdata),
-      .mac_axis_tlast(tx_axis_mac_legacy_tlast),
+//       .mac_axis_aclk(tx_mac_aclk_int),
+//       .mac_axis_tvalid(tx_axis_mac_legacy_tvalid),
+//       .mac_axis_tready(tx_axis_tsu_tready),
+//       .mac_axis_tdata(tx_axis_mac_legacy_tdata),
+//       .mac_axis_tlast(tx_axis_mac_legacy_tlast),
 
-      .rtc_timer_clk(gtx_clk),
-      .rtc_timer_in(rtc_timer_in),
+//       .rtc_timer_clk(gtx_clk),
+//       .rtc_timer_in(rtc_timer_in),
 
-      .mac_axis_out_tdata(tx_axis_tsu_tdata),
-      .mac_axis_out_tvalid(tx_axis_tsu_tvalid),
-      .mac_axis_out_tlast(tx_axis_tsu_tlast),
-      .mac_axis_out_tready(tx_axis_mac_legacy_tready)
-   );
+//       .mac_axis_out_tdata(tx_axis_tsu_tdata),
+//       .mac_axis_out_tvalid(tx_axis_tsu_tvalid),
+//       .mac_axis_out_tlast(tx_axis_tsu_tlast),
+//       .mac_axis_out_tready(tx_axis_mac_legacy_tready)
+//    );
 
    tsu_axis_rx tsu_rx (
       .rst(rx_mac_reset),
@@ -339,10 +335,10 @@ module simple_mac_no_shared (
 
       .tx_mac_aclk         (tx_mac_aclk),
       .tx_mac_resetn       (tx_mac_resetn),
-      .tx_axis_mac_tdata   (tx_axis_mac_legacy_tdata),
-      .tx_axis_mac_tvalid  (tx_axis_mac_legacy_tvalid),
-      .tx_axis_mac_tlast   (tx_axis_mac_legacy_tlast),
-      .tx_axis_mac_tready  (tx_axis_mac_legacy_tready),
+      .tx_axis_mac_tdata   (tx_axis_tsu_tdata),
+      .tx_axis_mac_tvalid  (tx_axis_tsu_tvalid),
+      .tx_axis_mac_tlast   (tx_axis_tsu_tlast),
+      .tx_axis_mac_tready  (tx_axis_tsu_tready),
       .tx_axis_mac_tuser   (),
 
       .fifo_overflow       (),

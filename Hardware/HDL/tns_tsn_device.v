@@ -53,7 +53,6 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 
-
 module tns_tsn_device #(
         // C_DATA_WIDTH should be big enough to hold the Ethernet header.
         parameter C_DATA_WIDTH = 256,
@@ -321,6 +320,15 @@ module tns_tsn_device #(
     (* mark_debug = "true" *) wire                rx_axis_others_fifo_tvalid;
     (* mark_debug = "true" *) wire                rx_axis_others_fifo_tready;
     (* mark_debug = "true" *) wire                rx_axis_others_fifo_tlast;
+    wire    [7:0]       rx_axis_ptp_fifo_tdata;
+    wire                rx_axis_ptp_fifo_tvalid;
+    wire                rx_axis_ptp_fifo_tready;
+    wire                rx_axis_ptp_fifo_tlast;
+
+    wire    [7:0]       rx_axis_critical_fifo_tdata;
+    wire                rx_axis_critical_fifo_tvalid;
+    wire                rx_axis_critical_fifo_tready;
+    wire                rx_axis_critical_fifo_tlast;
 
     // rtc_mini rtc_i (
     //     // .rst(rtc_rst),
@@ -874,6 +882,7 @@ module tns_tsn_device #(
     (* mark_debug = "true" *) wire    [31:0]  rx_axis_fifo_tkeep_256;
 
     wire             is_it_frame;
+    wire [1:0]       frame_type;
 
     (* mark_debug = "true" *) wire    [7:0]   rx_axis_fifo_tdata_8;
     (* mark_debug = "true" *) wire            rx_axis_fifo_tvalid_8;
@@ -904,7 +913,8 @@ module tns_tsn_device #(
         .axis_tready            (rx_axis_fifo_tready_256),          // input axis_tready
         .axis_tdata             (rx_axis_fifo_tdata_256),           // input axis_tdata
         .axis_tlast             (rx_axis_fifo_tlast_256),           // input axis_tlast
-        .is_it_frame            (is_it_frame)                       // ioutut is_it_frame
+        .is_it_frame            (is_it_frame),                      // output is_it_frame
+        .frame_type             (frame_type)                        // output frame_type (2: IT, 1: ptp, 0: critical) 
     );
 
     // downsize data width
@@ -923,23 +933,40 @@ module tns_tsn_device #(
         .m_axis_tlast           (rx_axis_fifo_tlast_8)              // output m_axis_tlast
     );
 
-
     // separate IT frames and others, including ptp frames and critical frames
-    axis_switch_1_2 axis_switch_1_2_inst (
-        .aclk                   (rx_fifo_clock),                                               // input aclk
-        .aresetn                (rx_fifo_resetn),                                                  // input aresetn
-        .s_axis_tvalid          (rx_axis_fifo_tvalid_8),                                        // input s_axis_tvalid
-        .s_axis_tready          (rx_axis_fifo_tready_8),                                        // output s_axis_tready
-        .s_axis_tdata           (rx_axis_fifo_tdata_8),                                         // input s_axis_tdata
-        .s_axis_tlast           (rx_axis_fifo_tlast_8),                                         // input s_axis_tlast
-        .s_axis_tdest           (is_it_frame),                                                  // input s_axis_tdest
-        .m_axis_tvalid          ({rx_axis_it_fifo_tvalid, rx_axis_others_fifo_tvalid}),         // output m_axis_tvalid
-        .m_axis_tready          ({rx_axis_it_fifo_tready, rx_axis_others_fifo_tready}),         // input m_axis_tready
-        .m_axis_tdata           ({rx_axis_it_fifo_tdata, rx_axis_others_fifo_tdata}),           // output m_axis_tdata
-        .m_axis_tlast           ({rx_axis_it_fifo_tlast, rx_axis_others_fifo_tlast}),           // output m_axis_tlast
-        .m_axis_tdest           (),                                                             // output m_axis_tdest
-        .s_decode_err           ()                                                              // output s_decode_err
+    // axis_switch_1_2 axis_switch_1_2_inst (
+    //     .aclk                   (rx_fifo_clock),                                               // input aclk
+    //     .aresetn                (rx_fifo_resetn),                                                  // input aresetn
+    //     .s_axis_tvalid          (rx_axis_fifo_tvalid_8),                                        // input s_axis_tvalid
+    //     .s_axis_tready          (rx_axis_fifo_tready_8),                                        // output s_axis_tready
+    //     .s_axis_tdata           (rx_axis_fifo_tdata_8),                                         // input s_axis_tdata
+    //     .s_axis_tlast           (rx_axis_fifo_tlast_8),                                         // input s_axis_tlast
+    //     .s_axis_tdest           (is_it_frame),                                                  // input s_axis_tdest
+    //     .m_axis_tvalid          ({rx_axis_it_fifo_tvalid, rx_axis_others_fifo_tvalid}),         // output m_axis_tvalid
+    //     .m_axis_tready          ({rx_axis_it_fifo_tready, rx_axis_others_fifo_tready}),         // input m_axis_tready
+    //     .m_axis_tdata           ({rx_axis_it_fifo_tdata, rx_axis_others_fifo_tdata}),           // output m_axis_tdata
+    //     .m_axis_tlast           ({rx_axis_it_fifo_tlast, rx_axis_others_fifo_tlast}),           // output m_axis_tlast
+    //     .m_axis_tdest           (),                                                             // output m_axis_tdest
+    //     .s_decode_err           ()                                                              // output s_decode_err
+    // );
+
+    // separate IT frames, ptp frames and critical frames
+    axis_switch_1_3 axis_switch_1_3_inst (
+        .aclk(rx_fifo_clock),                    // input wire aclk
+        .aresetn(rx_fifo_resetn),              // input wire aresetn
+        .s_axis_tvalid(rx_axis_fifo_tvalid_8),  // input wire [0 : 0] s_axis_tvalid
+        .s_axis_tready(rx_axis_fifo_tready_8),  // output wire [0 : 0] s_axis_tready
+        .s_axis_tdata(rx_axis_fifo_tdata_8),    // input wire [7 : 0] s_axis_tdata
+        .s_axis_tlast(rx_axis_fifo_tlast_8),    // input wire [0 : 0] s_axis_tlast
+        .s_axis_tdest(frame_type),    // input wire [1 : 0] s_axis_tdest
+        .m_axis_tvalid({rx_axis_it_fifo_tvalid, rx_axis_ptp_fifo_tvalid, tx_axis_fifo_legacy_tvalid[1]}),  // output wire [2 : 0] m_axis_tvalid
+        .m_axis_tready({rx_axis_it_fifo_tready, rx_axis_ptp_fifo_tready, tx_axis_fifo_legacy_tready[1]}),  // input wire [2 : 0] m_axis_tready
+        .m_axis_tdata({rx_axis_it_fifo_tdata, rx_axis_ptp_fifo_tdata, tx_axis_fifo_legacy_tdata[1]}),    // output wire [23 : 0] m_axis_tdata
+        .m_axis_tlast({rx_axis_it_fifo_tlast, rx_axis_ptp_fifo_tlast, tx_axis_fifo_legacy_tlast[1]}),    // output wire [2 : 0] m_axis_tlast
+        .m_axis_tdest(),    // output wire [5 : 0] m_axis_tdest
+        .s_decode_err()    // output wire [0 : 0] s_decode_err
     );
+
     assign tx_axis_fifo_legacy_tvalid[NUM_PORTS] = rx_axis_it_fifo_tvalid;
     assign rx_axis_it_fifo_tready = tx_axis_fifo_legacy_tready[NUM_PORTS];
     assign tx_axis_fifo_legacy_tdata[NUM_PORTS]  = rx_axis_it_fifo_tdata;
@@ -990,10 +1017,10 @@ module tns_tsn_device #(
         .s_axis_aresetn(rx_fifo_resetn),                // input wire s_axis_aresetn
         .m_axis_aresetn(axis_pl2ps_resetn),             // input wire m_axis_aresetn
         .s_axis_aclk(rx_fifo_clock),                    // input wire s_axis_aclk
-        .s_axis_tvalid(rx_axis_others_fifo_tvalid),     // input wire s_axis_tvalid
-        .s_axis_tready(rx_axis_others_fifo_tready),     // output wire s_axis_tready
-        .s_axis_tdata(rx_axis_others_fifo_tdata),       // input wire [7 : 0] s_axis_tdata
-        .s_axis_tlast(rx_axis_others_fifo_tlast),       // input wire s_axis_tlast
+        .s_axis_tvalid(rx_axis_ptp_fifo_tvalid),     // input wire s_axis_tvalid
+        .s_axis_tready(rx_axis_ptp_fifo_tready),     // output wire s_axis_tready
+        .s_axis_tdata(rx_axis_ptp_fifo_tdata),       // input wire [7 : 0] s_axis_tdata
+        .s_axis_tlast(rx_axis_ptp_fifo_tlast),       // input wire s_axis_tlast
         .m_axis_aclk(s_axis_ps_clk),                    // input wire m_axis_aclk
         .m_axis_tvalid(axis_dma_o_tvalid_ps),           // output wire m_axis_tvalid
         .m_axis_tready(axis_dma_o_tready_ps),           // input wire m_axis_tready
@@ -1102,7 +1129,6 @@ module tns_tsn_device #(
         .tx_axis_tready             (tx_axis_fifo_legacy_tready[0]),
         .tx_axis_tlast              (tx_axis_fifo_legacy_tlast[0])
     );
-
 
     zynq_ps_i_wrapper zynq_ps_i
     (
