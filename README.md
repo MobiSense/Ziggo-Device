@@ -63,7 +63,7 @@ The left side of the picture is the ZYNQ development board we use, and the right
 
 [![Watch the video](figs/testbed.jpg)](https://cloud.tsinghua.edu.cn/f/b307da6840d84e5f9ff1/)
 
-> Click the pic to watch the vedio! Or just click [here](https://cloud.tsinghua.edu.cn/f/b307da6840d84e5f9ff1/).
+> Click the pic to watch the video! Or just click [here](https://cloud.tsinghua.edu.cn/f/b307da6840d84e5f9ff1/).
 
 ## Features
 

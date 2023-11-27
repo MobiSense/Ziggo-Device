@@ -12,7 +12,7 @@ Another method is to use Device to stamp the received packet and forward it from
 
 ![](../figs/offline_analyse.png)
 
-### ## Toolkit directly analyzes latency and jitter
+### Toolkit directly analyzes latency and jitter
 
 During the operation of the  `time sync` program, after receiving the test data frame, the program will save the delay information of the data frame in the package under the `build/packet_log.csv` file, save the batch statistics of latency and jitter in the critical directory under the build directory at the same time in the `build/critical_log.csv`.
 
@@ -55,7 +55,7 @@ cat critical.log | head -n1
 cat critical.log | tail -n5
 ```
 
-### 4.2 Offline analysis of latency and jitter
+### Offline analysis of latency and jitter
 
 If conducting offline analysis, it is important to note that the hardware used is located at `offline_analyze` branch. This version will stamp the key data with a receive timestamp and forward it from ETH2. We need to use a PC equipped with a Linux system to capture packets for analysis.
 
