@@ -1,6 +1,6 @@
 <div align="center">
 
-# ZIGGO TSNPerf: A Flexible and Standard-compliant Toolkit for TSN Performance Evaluation.
+# ZIGGO TSNPerf: A flexible and standard-compliant toolkit for TSN performance evaluation.
 
 </div>
 
