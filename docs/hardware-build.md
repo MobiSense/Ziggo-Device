@@ -6,23 +6,26 @@ If you just want to teach the board to run instead of modifying it, and you use 
 
 ## Table of Content
 
-- [Install Vivado](#install-vivado)
-- [Vivado project construction](#vivado-project-construction)
-- [Petalinux](#petalinux)
-  - [1.install ubuntu OS](#1install-ubuntu-os)
-  - [2.Download PetaLinux related image files in advance](#2download-petalinux-related-image-files-in-advance)
-  - [3.Activate the PetaLinux environment](#3activate-the-petalinux-environment)
-  - [4.Create PetaLinux Project](#4create-petalinux-project)
-  - [5.Petalinux Configuration](#5petalinux-configuration)
-  - [6. SD card partition and copy file](#6-sd-card-partition-and-copy-file)
-    - [File downloading](#file-downloading)
-    - [SD card partition](#sd-card-partition)
-    - [Copy files into SD card](#copy-files-into-sd-card)
-- [Launch the Board and log in](#launch-the-board-and-log-in)
-  - [1. Launch the Board](#1-launch-the-board)
-  - [2. Initialize PS](#2-initialize-ps)
-  - [3. Connect to Internet](#3-connect-to-internet)
-  - [4. Run the Software](#4-run-the-software)
+- [Hardware: Build the CaaS TSNPerf](#hardware-build-the-caas-tsnperf)
+  - [Before Start](#before-start)
+  - [Table of Content](#table-of-content)
+  - [Install Vivado](#install-vivado)
+  - [Vivado project construction](#vivado-project-construction)
+  - [Petalinux](#petalinux)
+    - [1.install ubuntu OS](#1install-ubuntu-os)
+    - [2.Download PetaLinux related image files in advance](#2download-petalinux-related-image-files-in-advance)
+    - [3.Activate the PetaLinux environment](#3activate-the-petalinux-environment)
+    - [4.Create PetaLinux Project](#4create-petalinux-project)
+    - [5.Petalinux Configuration](#5petalinux-configuration)
+    - [6. SD card partition and copy file](#6-sd-card-partition-and-copy-file)
+      - [File downloading](#file-downloading)
+      - [SD card partition](#sd-card-partition)
+      - [Copy files into SD card](#copy-files-into-sd-card)
+  - [Launch the Board and log in](#launch-the-board-and-log-in)
+    - [1. Launch the Board](#1-launch-the-board)
+    - [2. Initialize PS](#2-initialize-ps)
+    - [3. Connect to Internet](#3-connect-to-internet)
+    - [4. Run the Software](#4-run-the-software)
 
 ## Install Vivado
 
@@ -119,8 +122,9 @@ petalinux-create -t modules -n dma-proxy --enable
 
 ```bash
 rm -rf project-spec/meta-user/recipes-modules/*
-git clone http://gitlab.sense-lab.org/tsn-dev/dma-proxy-driver.git project-spec/meta-user/recipes-modules/dma-proxy
 ```
+
+download our dma-proxy (from [here](https://cloud.tsinghua.edu.cn/f/85cfd8e8174e4689b79b/)) and unzip in `project-spec/meta-user/recipes-modules/`
 
 3. Configuring the kernel
 
