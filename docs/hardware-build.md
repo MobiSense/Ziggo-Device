@@ -274,7 +274,7 @@ After that, you can get 4 key file: `BOOT.BIN` `boot.scr` `image.ub` `rootfs.tar
 
 #### File downloading
 
-Download the following file from [this](https://cloud.tsinghua.edu.cn/d/8277c491a8bd4e6a8997/) public link or from preceding steps:
+Download the following file from [this](https://cloud.tsinghua.edu.cn/d/0bbc00543e5b4b82a6ea/) public link or from preceding steps:
 
 * BOOT.BIN
 * boot.scr
@@ -283,7 +283,7 @@ Download the following file from [this](https://cloud.tsinghua.edu.cn/d/8277c491
 
 #### SD card partition
 
-In order to boot the CaaS Switch, you are supposed to have a micro SD card with >32GiB storage. Then use:
+In order to boot the TSNPerf, you are supposed to have a micro SD card with >32GiB storage. Then use:
 
 ```bash
 sudo apt-get install gparted
