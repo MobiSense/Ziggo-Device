@@ -81,7 +81,7 @@ The left side of the picture is the ZYNQ development board we use, and the right
 
 ## Read before start
 
-Getting started with ZIGGO-CaaS-Switch/ZIGGO-TSNPerf is a ==pretty hard== task. Users/developers need to have sufficient basic knowledge and be prepare to for a long periond of learning and debugging.
+Getting started with ZIGGO-CaaS-Switch/ZIGGO-TSNPerf is a ***pretty hard*** task. Users/developers need to have sufficient basic knowledge and be prepare to for a long periond of learning and debugging.
 
 Please refer to [basic_knowledge.md](docs/basic_knowledge.md) to check if you have ability to use ZIGGO competently. 
 
