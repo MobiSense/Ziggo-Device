@@ -20,11 +20,18 @@
 
 ## TestBed简单介绍
 
-我们内部对自己研发的Switch进行了互联互通测试，采用的网络拓扑如下所示。
-（图中的SW代表ZIGGO交换机，Device0可以使用普通Linux PC，Device1代表ZIGGO TSNPerf）
+我们内部对自己研发的CaaS-Switch进行了互联互通测试，采用的网络拓扑如下所示。
 ![topo](../figs/topo.PNG)
 
-该拓扑由三个Device和两个Switch组成，Device 0负责发送背景流量，路径为黑色箭头；Device 1负责发送测试流量（关键流量），路径为红色箭头。
+该拓扑由2个TSNPerf、2个CaaS-Switch和1个PC组成，PC负责发送背景流量，路径为黑色箭头；左侧TSNPerf负责发送测试流量（关键流量），路径为红色箭头。
+
+所有测试项目的流程大致可以分为两个阶段：
+
+1. 时间同步：启动时间同步，保证TSNPerf、CaaS-Switch在一个时钟域下。
+
+   注：时间同步程序运行在TSNPerf、CaaS-Switch的系统中。
+
+2. 发送测试流量：根据schedule.json文件，TSNperf进行测试流量发送。
 
 ## 互联互通测试项目介绍
 
@@ -106,7 +113,7 @@ Switch、TSNPerf 的软硬件都使用主分支。
    Device每次发送4个数据包，每个Switch都预留了3个时隙，将以下两个配置文件下发即可：
    `base/d3s2-baseline-3t-config.json`，
    `base/d3s2-baseline-3t-schedule-base.json`
-4. ./batch.mjs launch
+4. ./batch.mjs launch （包括了时间同步和数据包发送）
 5. ./batch.mjs collect
 
 ### 门控能力
