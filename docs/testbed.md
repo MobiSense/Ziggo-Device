@@ -23,7 +23,7 @@
 我们内部对自己研发的CaaS-Switch进行了互联互通测试，采用的网络拓扑如下所示。
 ![topo](../figs/topo.PNG)
 
-该拓扑由2个TSNPerf、2个CaaS-Switch和1个PC组成，PC负责发送背景流量，路径为黑色箭头；左侧TSNPerf负责发送测试流量（关键流量），路径为红色箭头。
+本Demo需要4个FPGA开发板（2个TSNPerf、2个CaaS-Switch）和1台普通PC。如果条件有限可以删去一个CaaS-Switch。PC负责发送背景流量，路径为黑色箭头；左侧TSNPerf负责发送测试流量（关键流量），路径为红色箭头。
 
 所有测试项目的流程大致可以分为两个阶段：
 
@@ -31,7 +31,7 @@
 
    注：时间同步程序运行在TSNPerf、CaaS-Switch的系统中。
 
-2. 发送测试流量：根据schedule.json文件，TSNperf进行测试流量发送。
+2. 发送测试流量：根据schedule.json文件，TSNPerf进行测试流量发送。
 
 ## 互联互通测试项目介绍
 
