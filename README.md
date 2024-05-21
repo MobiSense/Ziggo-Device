@@ -1,47 +1,39 @@
 <div align="center">
 
-# ZIGGO TSNPerf: A flexible and standard-compliant toolkit for TSN performance evaluation.
+# ZIGGO Device: A flexible and standard-compliant toolkit for TSN performance evaluation.
 
 </div>
 
 <h3 align="center">
     <a href="http://tns.thss.tsinghua.edu.cn/ziggo/">Project Page</a> |
     <a href="https://ieeexplore.ieee.org/document/10228980">Paper</a> |
-    <a href="https://github.com/Horacehxw/Ziggo-CaaS-Switch">ZIGGO-CaaS-Switch</a> |
-    <a href="https://github.com/Horacehxw/Ziggo-Evaluation-Toolkit">ZIGGO-TSNPerf</a> 
+    <a href="https://github.com/Mobisense/Ziggo-CaaS-Switch">ZIGGO-CaaS-Switch</a> |
+    <a href="https://github.com/MobiSense/Ziggo-Device">ZIGGO-Device</a> 
 </h3>
 
 ![](figs/banner.jpg)
 
 ## Table of Contents
 
-1. [Introduction](#introduction)
-
-2. [ZIGGO Open Platform](#ziggo-open-platform)
-
-3. [Demo](#demo)
-
-4. [Features](#features)
-
-5. [Read before start](#read-before-start)
-
-6. [Getting Started](#getting-started)
-
-7. [System Design](#system-design)
-
-8. [Demo APP Tutorial](#demo-app-tutorial)
-
-9. [License and Citation](#license-and-citation)
-
-10. [TODO List](#todo-list)
-
-11. [Contributing](#Contributing)
+- [ZIGGO Device: A flexible and standard-compliant toolkit for TSN performance evaluation.](#ziggo-device-a-flexible-and-standard-compliant-toolkit-for-tsn-performance-evaluation)
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [ZIGGO Open Platform](#ziggo-open-platform)
+  - [Demo](#demo)
+  - [Features](#features)
+  - [Read before start](#read-before-start)
+  - [Getting Started](#getting-started)
+  - [System Design](#system-design)
+  - [Demo APP Tutorial](#demo-app-tutorial)
+  - [License and Citation](#license-and-citation)
+  - [TODO List](#todo-list)
+  - [Contributing](#contributing)
 
 ## Introduction
 
 ZIGGO is a `flexible`, `standard-compliant`, and `control-function-virtualized` TSN switch platform ready for **industrial control**, **automotive electronics**, and other **time-sensitive applications**.
 
-This is the document for the ZIGGO TSNPerf. (We also offer [ZIGGO-CaaS-Switch](https://github.com/Horacehxw/Ziggo-CaaS-Switch) that comply with the IEEE 802.1 TSN standard.) Our TSNPerf supports testing all standards-compliant switches.
+This is the document for the ZIGGO Device. (We also offer [ZIGGO-CaaS-Switch](https://github.com/Horacehxw/Ziggo-CaaS-Switch) that comply with the IEEE 802.1 TSN standard.) Our Device supports testing all standards-compliant switches.
 
 ## ZIGGO Open Platform
 
@@ -51,7 +43,7 @@ The construction of the ZIGGO Open Platform consists of three levels: network de
 
 - The software and hardware projects, along with the development board startup [tutorial](docs/getting-started.md), provide instructions for setting up an individual network device.
 
-- The [CNC User Manual](docs/cnc-manual.md) and [TSNPerf User Manual](docs/tsnperf.md) cover system configuration and management tools.
+- The [CNC User Manual](docs/cnc-manual.md) and [Device User Manual](docs/Device.md) cover system configuration and management tools.
 
 - Lastly, we offer a comprehensive [Demo App building tutorial](docs/testbed.md) that instructs how to
   collaboratively build a complete and functional Demo using network devices and
@@ -81,7 +73,7 @@ The left side of the picture is the ZYNQ development board we use, and the right
 
 ## Read before start
 
-Getting started with ZIGGO-CaaS-Switch/ZIGGO-TSNPerf is a ***pretty hard*** task. Users/developers need to have sufficient basic knowledge and be prepare to for a long periond of learning and debugging.
+Getting started with ZIGGO-CaaS-Switch/ZIGGO-Device is a ***pretty hard*** task. Users/developers need to have sufficient basic knowledge and be prepare to for a long periond of learning and debugging.
 
 Please refer to [basic_knowledge.md](docs/basic_knowledge.md) to check if you have ability to use ZIGGO competently. 
 
@@ -89,7 +81,7 @@ Please refer to [basic_knowledge.md](docs/basic_knowledge.md) to check if you ha
 
 Please refer to [required.md](docs/required.md)  to  get prepared.
 
-After that, please refer to [getting_started.md](docs/getting-started.md) for the build and run a single ZIGGO TSNPerf.
+After that, please refer to [getting_started.md](docs/getting-started.md) for the build and run a single ZIGGO Device.
 
 ## System Design
 
@@ -97,11 +89,11 @@ ZIGGO is implemented on ZYNQ-7000 SoC and exploits ZYNQ's both hardware and soft
 
 ![framework](figs/framework.jpg)
 
-We also provide more in-depth [documentation](docs/system-design.md) explaining specific design principles for ZIGGO TSNPerf.
+We also provide more in-depth [documentation](docs/system-design.md) explaining specific design principles for ZIGGO Device.
 
 ## Demo APP Tutorial
 
-We also provide a [testbed build document](docs/testbed.md) that allows you to build a real-time Ethernet system using the ZIGGO swtich and TSNPerf. 
+We also provide a [testbed build document](docs/testbed.md) that allows you to build a real-time Ethernet system using the ZIGGO swtich and Device. 
 
 Through this platform, we can measure the `delay` and `jitter` of TSN time-critcial traffic, the switch's `gating capability`, `bandwidth guarantee` and `gating accuracy`. 
 
@@ -138,8 +130,8 @@ Please consider citing our papers if the project helps your research with the fo
 ## TODO List
 
 - [x] ZIGGO CaaS Switch Release
-- [x] ZIGGO TSNPerf Release
-- [x] ZIGGO TSNPerf Source Code
+- [x] ZIGGO Device Release
+- [x] ZIGGO Device Source Code
 - [x] Tutorial for build a testbed
 - [ ] Test Case for TSN
 

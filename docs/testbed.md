@@ -23,15 +23,15 @@
 我们内部对自己研发的CaaS-Switch进行了互联互通测试，采用的网络拓扑如下所示。
 ![topo](../figs/topo.PNG)
 
-本Demo需要4个FPGA开发板（2个TSNPerf、2个CaaS-Switch）和1台普通PC。如果条件有限可以删去一个CaaS-Switch。PC负责发送背景流量，路径为黑色箭头；左侧TSNPerf负责发送测试流量（关键流量），路径为红色箭头。
+本Demo需要4个FPGA开发板（2个Device、2个CaaS-Switch）和1台普通PC。如果条件有限可以删去一个CaaS-Switch。PC负责发送背景流量，路径为黑色箭头；左侧Device负责发送测试流量（关键流量），路径为红色箭头。
 
 所有测试项目的流程大致可以分为两个阶段：
 
-1. 时间同步：启动时间同步，保证TSNPerf、CaaS-Switch在一个时钟域下。
+1. 时间同步：启动时间同步，保证Device、CaaS-Switch在一个时钟域下。
 
-   注：时间同步程序运行在TSNPerf、CaaS-Switch的系统中。
+   注：时间同步程序运行在Device、CaaS-Switch的系统中。
 
-2. 发送测试流量：根据schedule.json文件，TSNPerf进行测试流量发送。
+2. 发送测试流量：根据schedule.json文件，Device进行测试流量发送。
 
 ## 互联互通测试项目介绍
 
@@ -73,15 +73,15 @@
 - 预期：
   1. n=1,2,4,8 情况下都能每个周期通过且仅通过 n 个包
 
-> 如果您按照下文的配置使用我们开源的ZIGGO交换机和TSNPerf，则您可以在上面四个测试中得到和预期相类似的效果。如果出现了任何问题，欢迎在github上提出issue。
+> 如果您按照下文的配置使用我们开源的ZIGGO交换机和Device，则您可以在上面四个测试中得到和预期相类似的效果。如果出现了任何问题，欢迎在github上提出issue。
 
 ## 设备参数设置与部署
 
 Switch软硬件代码在仓库 [ZIGGO-Caas-Switch](https://github.com/Horacehxw/Ziggo-CaaS-Switch) 中，使用主分支即可。
 
-TSNPerf的软硬件代码在本仓库。
+Device的软硬件代码在本仓库。
 
-> 注意：带宽能力测试中的TSNPerf需要使用offline_analyze分支，门控精度测试中的TSNPerf需要使用packet_resize分支【用于自定义测试包大小】。测试中请勿忘记切换分支。
+> 注意：带宽能力测试中的Device需要使用offline_analyze分支，门控精度测试中的Device需要使用packet_resize分支【用于自定义测试包大小】。测试中请勿忘记切换分支。
 
 所有设备的IP、MAC和ID如下所示，与本文档后面提供的JSON配置文件对应：
 
@@ -103,7 +103,7 @@ TSNPerf的软硬件代码在本仓库。
 
 ### 基准测试
 
-Switch、TSNPerf 的软硬件都使用主分支。
+Switch、Device 的软硬件都使用主分支。
 
 测试步骤：
 
@@ -118,7 +118,7 @@ Switch、TSNPerf 的软硬件都使用主分支。
 
 ### 门控能力
 
-Switch、TSNPerf 的软硬件都使用主分支。
+Switch、Device 的软硬件都使用主分支。
 
 1. 让背景流量Device发包（基准测试不需要发送背景流量）
 2. 修改batch.mjs修改正确的配置文件名
@@ -152,7 +152,7 @@ Switch、TSNPerf 的软硬件都使用主分支。
 
 ### 带宽保证
 
-Switch代码使用主分支，TSNPerf代码使用offline_analyze分支。
+Switch代码使用主分支，Device代码使用offline_analyze分支。
 
 测试步骤：
 
@@ -194,7 +194,7 @@ Switch代码使用主分支，TSNPerf代码使用offline_analyze分支。
 
 ### 门控精度
 
-Switch代码使用主分支，TSNPerf代码使用packet_resize分支。
+Switch代码使用主分支，Device代码使用packet_resize分支。
 
 1. 修改batch.mjs修改正确的配置文件名
 

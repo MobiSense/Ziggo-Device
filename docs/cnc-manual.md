@@ -29,7 +29,7 @@ npm install
 export PYTHONPATH="/home/<用户名>/scripts"
 ```
 
-## 2. 下载好Switch和TSNPerf的软件代码
+## 2. 下载好Switch和Device的软件代码
 
 >  （记得提前配置好树莓派和所有板子之间的ssh public key，方便免密登录）
 

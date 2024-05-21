@@ -1,4 +1,4 @@
-# TSNPerf User Manual
+# Device User Manual
 
 There are two analysis methods for Toolkit:
 

@@ -1,4 +1,4 @@
-# Hardware: Build the CaaS TSNPerf
+# Hardware: Build the CaaS Device
 
 ## Before Start
 
@@ -6,7 +6,7 @@ If you just want to teach the board to run instead of modifying it, and you use 
 
 ## Table of Content
 
-- [Hardware: Build the CaaS TSNPerf](#hardware-build-the-caas-tsnperf)
+- [Hardware: Build the CaaS Device](#hardware-build-the-caas-Device)
   - [Before Start](#before-start)
   - [Table of Content](#table-of-content)
   - [Install Vivado](#install-vivado)
@@ -283,7 +283,7 @@ Download the following file from [this](https://cloud.tsinghua.edu.cn/d/0bbc0054
 
 #### SD card partition
 
-In order to boot the TSNPerf, you are supposed to have a micro SD card with >32GiB storage. Then use:
+In order to boot the Device, you are supposed to have a micro SD card with >32GiB storage. Then use:
 
 ```bash
 sudo apt-get install gparted

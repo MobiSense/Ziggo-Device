@@ -4,7 +4,7 @@
 
 - [Folder Structure](#folder-structure)
 - [Introduction to git branches](#introduction-to-git-branches)
-- [Building and Starting the TSNPerf](#building-and-starting-the-tsnperf)
+- [Building and Starting the Device](#building-and-starting-the-Device)
 
 ## Folder Structure
 
@@ -26,7 +26,7 @@
 | packet_resize   | √              | √             | √              |                 |
 | offline_analyze | √              |               |                | √               |
 
-The branches of TSNPerf submitted this time can be divided into three categories. But the main branch is inconvenient to use in two ways. In order to solve the above two limitations, we have also submitted two patch branches.
+The branches of Device submitted this time can be divided into three categories. But the main branch is inconvenient to use in two ways. In order to solve the above two limitations, we have also submitted two patch branches.
 
 * The `main` branch contains basic time synchronization and pkt_gen functions, as well as online analysis functions. However, its limitation is that it can only send Ethernet of MTU (1500B) size, and due to the limited performance of the zynq development board, online analysis may cause packet loss.
 * `packet_resize` branch can send Ethernet frames of any size (64B-1500B).
@@ -48,7 +48,7 @@ The branches of TSNPerf submitted this time can be divided into three categories
 
 > Note2: When switch to 'offline_anaylze' branch, you need to link device to anthor PC (linux) by wire in ETH1.
 
-## Building and Starting the TSNPerf
+## Building and Starting the Device
 
 [Set up the FPGA board and initialize PS system](hardware-build.md)
 
